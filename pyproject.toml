@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rufus"
+version = "0.1.0"
+description = "Long-Term Stock Advisory Assistant (LLM + technical + sentiment)"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "yfinance>=0.2.40",
+    "pandas-market-calendars>=4.3",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[project.scripts]
+rufus-scheduler = "rufus.scheduler:main"
+
+[tool.setuptools.packages.find]
+include = ["rufus*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
